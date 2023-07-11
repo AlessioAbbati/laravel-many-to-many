@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Technology;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TechnologiesTableSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class TechnologiesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        foreach (config('technologies') as $objTechnology) {
+            Technology::create($objTechnology);
+        }
     }
 }
