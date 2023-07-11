@@ -42,13 +42,13 @@ class TechnologyController extends Controller
     
     public function show($id)
     {
-        return view('admin.technologies.show', compact('technology'));
+        return view('admin.technologies.show');
     }
 
    
     public function edit($id)
     {
-        return view('admin.technologies.edit', compact('technology'));
+        return view('admin.technologies.edit');
     }
 
     
