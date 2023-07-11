@@ -39,6 +39,25 @@
         </div>  
 
         <div class="mb-3">
+            <h6>technologies</h6>
+            @foreach ($technologies as $technology)
+            <div class="form-check">
+                <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="technology{{ $technology->id }}" 
+                    value="{{ $technology->id }}"
+                    name="technologies[]"
+                    @if (in_array($technology->id, old('technologies', $project->technologies->pluck('id')->all()))) checked @endif 
+                >
+                <label class="form-check-label" for="tag{{ $technology->id }}">
+               {{ $technology->name }}
+                </label>
+            </div>
+            @endforeach
+        </div>  
+
+        <div class="mb-3">
             <label for="author" class="form-label">Author</label>
             <input
                 type="text"
@@ -106,7 +125,7 @@
             </div>
         </div>
 
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label for="languages" class="form-label">Languages</label>
             <input
                 type="text"
@@ -118,7 +137,7 @@
             <div class="invalid-feedback">
                 @error('languages') {{ $message }} @enderror
             </div>
-        </div>
+        </div> --}}
 
         <div class="mb-3">
             <label for="link_github" class="form-label">Link github</label>
