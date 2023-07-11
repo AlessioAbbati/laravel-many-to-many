@@ -3,20 +3,20 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Technology;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ProjectsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+   
     public function run()
     {
+        $technologies = Technology::all();
         foreach (config('projects') as $objProject) {
-            Project::create($objProject);
+            $project = Project::create($objProject);
+
+            $project->technologies()->sync([1, 2, 3]);
         }
     }
 }
