@@ -6,6 +6,7 @@ use App\Models\Type;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -19,6 +20,8 @@ class ProjectController extends Controller
         'description'       => 'string',
         'languages'         => 'required|string|max:50',
         'link_github'       => 'required|url|max:200',
+        'technologies'      => 'nullable|array',
+        'technologies. *'   => 'intger|exists:technologies,id',
         
     ];
 
@@ -40,7 +43,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('Admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+        return view('Admin.projects.create', compact('types', 'technologies'));
     }
 
     
@@ -63,8 +67,8 @@ class ProjectController extends Controller
         $newProject->link_github    = $data['link_github'];
         $newProject->save();
 
-        // return 'commentare se serve debuggare';
-        // $newComic = Comic::create($data);
+        // associo itag
+        $newProject->technologies()->sync($data['technologies'] ?? []);
 
         return redirect()->route('admin.project.show', ['project' => $newProject]);
     }
@@ -79,7 +83,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     
@@ -102,7 +107,7 @@ class ProjectController extends Controller
         $project->link_github       = $data['link_github'];
         $project->update();
 
-       
+        $project->technologies()->sync($data['technologies'] ?? []);
 
         return redirect()->route('admin.project.show', ['project' => $project]);
     }
@@ -144,7 +149,9 @@ class ProjectController extends Controller
     public function harddelete($id)
     {
         $project = Project::withTrashed()->find($id);
-        $project->forceDelete();
+        // $project->forceDelete();
+        // se ho il trashed lo inserisco nel harddelete
+        $project->tags()->detach();
 
         return to_route('admin.project.trashed')->with('delete_success', $project);
     }
