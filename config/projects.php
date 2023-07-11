@@ -9,7 +9,7 @@ return [
         "last_update" => "2023-03-27",
         "collaborators" => "",
         "description" => "clone of spotify",
-        "languages" => "HTML - CSS",
+        "technologies" => [1],
         "link_github" => "https://github.com/AlessioAbbati/html-css-spotifyweb.git",
     ],
     [
@@ -20,7 +20,7 @@ return [
         "last_update" => "2023-04-26",
         "collaborators" => "",
         "description" => "clone of minefield",
-        "languages" => "HTML - CSS - JS",
+        "technologies" => [1, 2],
         "link_github" => "https://github.com/AlessioAbbati/js-campominato-dom.git",
     ],
     [
@@ -31,7 +31,7 @@ return [
         "last_update" => "2023-05-03",
         "collaborators" => "",
         "description" => "clone of social",
-        "languages" => "HTML - CSS - JS",
+        "technologies" => [1, 2],
         "link_github" => "https://github.com/AlessioAbbati/js-social-posts.git",
     ],
     [
@@ -42,7 +42,7 @@ return [
         "last_update" => "2023-05-16",
         "collaborators" => "",
         "description" => "clone of whatsapp",
-        "languages" => "HTML - CSS - VUE.JS",
+        "technologies" => [1, 3],
         "link_github" => "https://github.com/AlessioAbbati/vue-boolzapp.git",
     ],
     [
@@ -53,7 +53,7 @@ return [
         "last_update" => "2023-05-26",
         "collaborators" => "",
         "description" => "clone of netflix",
-        "languages" => "HTML - VUE.JS",
+        "technologies" => [1, 3],
         "link_github" => "https://github.com/AlessioAbbati/vite-boolflix.git",
     ],
     [
@@ -64,7 +64,7 @@ return [
         "last_update" => "2023-06-06",
         "collaborators" => "",
         "description" => "clone of football league page",
-        "languages" => "HTML - VUE.JS",
+        "technologies" => [1, 3],
         "link_github" => "https://github.com/AlessioAbbati/proj-html-vuejs.git",
     ],
     [
@@ -75,7 +75,7 @@ return [
         "last_update" => "2023-07-04",
         "collaborators" => "Felice D'Arcangelo - Lamberto Neri - Nicola Soggiu - Giulio D'Angelo - Domenico Ferrari",
         "description" => "clone of travel agency",
-        "languages" => "PHP - BLADE",
+        "technologies" => [5],
         "link_github" => "https://github.com/AlessioAbbati/laravel-boolean.git",
     ],
     

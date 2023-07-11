@@ -12,11 +12,21 @@ class ProjectsTableSeeder extends Seeder
    
     public function run()
     {
-        $technologies = Technology::all();
+        // $technologies = Technology::all();
         foreach (config('projects') as $objProject) {
-            $project = Project::create($objProject);
+            $project = Project::create([
+                'type_id' => $objProject['type_id'],
+                'title' => $objProject['title'],
+                'author' => $objProject['author'],
+                'creation_date' => $objProject['creation_date'],
+                'last_update' => $objProject['last_update'],
+                'collaborators' => $objProject['collaborators'],
+                'description' => $objProject['description'],
+                'link_github' => $objProject['link_github'],
+                
+            ]);
 
-            $project->technologies()->sync([1, 2, 3]);
+            $project->technologies()->sync($objProject['technologies']);
         }
     }
 }

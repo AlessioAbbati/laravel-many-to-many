@@ -18,10 +18,9 @@ class ProjectController extends Controller
         'last_update'       => 'required|date',
         'collaborators'     => 'string|max:150',
         'description'       => 'string',
-        'languages'         => 'required|string|max:50',
         'link_github'       => 'required|url|max:200',
-        'technologies'      => 'nullable|array',
-        'technologies. *'   => 'intger|exists:technologies,id',
+        // 'technologies'      => 'nullable|array',
+        // 'technologies. *'   => 'intger|exists:technologies,id',
         
     ];
 
@@ -63,7 +62,7 @@ class ProjectController extends Controller
         $newProject->last_update    = $data['last_update'];
         $newProject->collaborators  = $data['collaborators'];
         $newProject->description    = $data['description'];
-        $newProject->languages      = $data['languages'];
+        // $newProject->languages      = $data['languages'];
         $newProject->link_github    = $data['link_github'];
         $newProject->save();
 
@@ -103,7 +102,7 @@ class ProjectController extends Controller
         $project->last_update       = $data['last_update'];
         $project->collaborators     = $data['collaborators'];
         $project->description       = $data['description'];
-        $project->languages         = $data['languages'];
+        // $project->languages         = $data['languages'];
         $project->link_github       = $data['link_github'];
         $project->update();
 
@@ -151,7 +150,7 @@ class ProjectController extends Controller
         $project = Project::withTrashed()->find($id);
         // $project->forceDelete();
         // se ho il trashed lo inserisco nel harddelete
-        $project->tags()->detach();
+        $project->technologies()->detach();
 
         return to_route('admin.project.trashed')->with('delete_success', $project);
     }
