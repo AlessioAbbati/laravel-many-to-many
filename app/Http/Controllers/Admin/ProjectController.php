@@ -74,8 +74,9 @@ class ProjectController extends Controller
     }
 
     
-    public function show(Project $project)
+    public function show($slug)
     {
+        $project = Project::where('slug', $slug)->firstOrFail();
         return view('admin.projects.show', compact('project'));
     }
 
@@ -149,10 +150,10 @@ class ProjectController extends Controller
     public function harddelete($id)
     {
         $project = Project::withTrashed()->find($id);
-        // $project->forceDelete();
+        
         // se ho il trashed lo inserisco nel harddelete
         $project->technologies()->detach();
-
+        $project->forceDelete();
         return to_route('admin.project.trashed')->with('delete_success', $project);
     }
 }

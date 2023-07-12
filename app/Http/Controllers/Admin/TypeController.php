@@ -72,7 +72,13 @@ class TypeController extends Controller
     
     public function destroy(Type $type)
     {
+        // per eliminare dalla tabella il singolo innesto di un'altra tabella
+        foreach ($type->projects as $project){
+            $project->type_id = 1;
+            $project->update();
+        }
+
         $type->delete(); 
-        return to_route('admin.type.index');
+        return to_route('admin.type.index')->with('type_delete_success', $type);
     }
 }
