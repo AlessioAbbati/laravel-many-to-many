@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Type;
 use App\Models\Project;
+use App\Models\Technology;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Technology;
 
 class ProjectController extends Controller
 {
@@ -56,7 +57,7 @@ class ProjectController extends Controller
         // Salvare i dati nel database
         $newProject = new Project();
         $newProject->title          = $data['title'];
-        $newProject->slug           = Project::slugger($data['title']);
+        $newProject->slug           = Str::slug($data['title']);
         $newProject->type_id        = $data['type_id'];
         $newProject->author         = $data['author'];
         $newProject->creation_date  = $data['creation_date'];
@@ -90,7 +91,7 @@ class ProjectController extends Controller
     }
 
     
-    public function update(Request $request, Project $project, $slug)
+    public function update(Request $request, $slug)
     {
         $project = Project::where('slug', $slug)->firstOrFail();
 
@@ -117,27 +118,33 @@ class ProjectController extends Controller
     }
 
    
-    public function destroy(Project $project)
+    public function destroy($slug)
     {
+
+        $project = Project::where('slug', $slug)->firstOrFail();
+
         $project->delete();
 
         return to_route('admin.project.index')->with('delete_success', $project);
     }
 
-    public function restore($id)
+    public function restore($slug)
     {
-        Project::withTrashed()->where('id', $id)->restore();
+        Project::withTrashed()->where('slug', $slug)->restore();
+        $project = Project::where('slug', $slug)->firstOrFail();
 
-        $project = Project::find($id);
+        $project = Project::find($slug);
 
         return to_route('admin.project.trashed')->with('restore_success', $project);
     }
 
-    public function cancel($id)
+    public function cancel($slug)
     {
-        Project::withTrashed()->where('id', $id)->restore();
+        
+        Project::withTrashed()->where('slug', $slug)->restore();
+        $project = Project::where('slug', $slug)->firstOrFail();
 
-        $project = Project::find($id);
+        $project = Project::find($slug);
 
         return to_route('admin.project.index')->with('cancel_success', $project);
     }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Project;
 use App\Models\Technology;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -15,8 +16,8 @@ class ProjectsTableSeeder extends Seeder
         // $technologies = Technology::all();
         foreach (config('projects') as $objProject) {
 
-            $slug = Project::slugger($objProject['title']);
-            
+            $slug = Str::slug($objProject['title']);
+
             $project = Project::create([
                 'type_id' => $objProject['type_id'],
                 'title' => $objProject['title'],
