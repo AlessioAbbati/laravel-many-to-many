@@ -81,16 +81,19 @@ class ProjectController extends Controller
     }
 
    
-    public function edit(Project $project)
+    public function edit($slug)
     {
+        $project = Project::where('slug', $slug)->firstOrFail();
         $types = Type::all();
         $technologies = Technology::all();
         return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     
-    public function update(Request $request, Project $project)
+    public function update(Request $request, Project $project, $slug)
     {
+        $project = Project::where('slug', $slug)->firstOrFail();
+
         // validare i dati 
         $request->validate($this->validations, $this->validations_messages);
 
