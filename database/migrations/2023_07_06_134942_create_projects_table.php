@@ -6,17 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
 
             $table->string('title', 50);
+            $table->string('slug', 100)->unique();
             $table->string('author', 30);
             $table->date('creation_date');
             $table->date('last_update');
