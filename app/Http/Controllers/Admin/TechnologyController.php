@@ -40,15 +40,15 @@ class TechnologyController extends Controller
     }
 
     
-    public function show($id)
+    public function show(Technology $technology)
     {
-        return view('admin.technologies.show');
+        return view('admin.technologies.show', compact('technology'));
     }
 
    
-    public function edit($id)
+    public function edit(Technology $technology)
     {
-        return view('admin.technologies.edit');
+        return view('admin.technologies.edit', compact('technology'));
     }
 
     

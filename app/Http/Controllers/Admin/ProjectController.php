@@ -19,8 +19,8 @@ class ProjectController extends Controller
         'collaborators'     => 'string|max:150',
         'description'       => 'string',
         'link_github'       => 'required|url|max:200',
-        // 'technologies'      => 'nullable|array',
-        // 'technologies. *'   => 'intger|exists:technologies,id',
+        'technologies'      => 'nullable|array',
+        'technologies. *'   => 'integer|exists:technologies,id',
         
     ];
 

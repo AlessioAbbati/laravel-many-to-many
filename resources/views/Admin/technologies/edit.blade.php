@@ -8,7 +8,7 @@
         @method('PUT')
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $type->name)}}">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $technology->name)}}">
 
             <div class="invalid-feedback">
                 @error('name') {{ $message }} @enderror
