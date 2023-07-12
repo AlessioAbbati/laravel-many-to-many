@@ -42,9 +42,9 @@
                     <td><a href="{{ $project->link_github }}">GitHub</a></td>
                     <td><a href="{{ route('admin.type.show', ['type' => $project->type]) }}">{{ $project->type->name }}</a></td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('admin.project.show', ['project' => $project->id]) }}">View</a>
-                        <a class="btn btn-warning" href="{{ route('admin.project.edit', ['project' => $project->id]) }}">Edit</a>
-                        <form class="d-inline-block" method="POST" action="{{ route('admin.project.destroy', ['project' => $project->id]) }}">
+                        <a class="btn btn-primary" href="{{ route('admin.project.show', ['project' => $project]) }}">View</a>
+                        <a class="btn btn-warning" href="{{ route('admin.project.edit', ['project' => $project]) }}">Edit</a>
+                        <form class="d-inline-block" method="POST" action="{{ route('admin.project.destroy', ['project' => $project]) }}">
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger">Delete</button>
