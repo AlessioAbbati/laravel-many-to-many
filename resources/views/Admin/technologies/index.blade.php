@@ -2,16 +2,12 @@
 
 @section('contents')
 
-@if (session('delete_success'))
+@if (session('technology_delete_success'))
 @php
-    $project = session('delete_success')
+    $technology = session('technology_delete_success')
 @endphp
 <div class="alert alert-danger">
-    "{{ $project->title }}" has been moved to the trash!!
-    <form action="{{ route("admin.project.cancel", ['project' => $project] )}}" method="post">
-        @csrf
-        <button class="btn btn-warning">Cancel</button>
-    </form>
+    "{{ $technology->name }}" has been deleted!!
 </div>
 @endif
 
