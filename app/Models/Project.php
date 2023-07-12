@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Type;
+use App\Traits\Slugger;
 use App\Models\Technology;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,6 +13,12 @@ class Project extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use Slugger;
+
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
 
     public function type() {
         return $this->belongsTo(Type::class);
