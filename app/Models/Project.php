@@ -14,7 +14,7 @@ class Project extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    // use Slugger;
+    use Slugger;
 
     public function getRouteKey()
     {
@@ -29,24 +29,24 @@ class Project extends Model
         return $this->belongsToMany(Technology::class);
     }
 
-    public static function slugger($string) {
+    // public static function slugger($string) {
 
 
-        // genera lo slug base
+    //     // genera lo slug base
 
-        $baseSlug = Str::slug($string);
-        $i = 1;
-        $slug = $baseSlug;
+    //     $baseSlug = Str::slug($string);
+    //     $i = 1;
+    //     $slug = $baseSlug;
 
-        // finche lo slug generato è presente nella tabella
-        while (self::where('slug', $slug)->get()) {
-            // genera un nuovo slug concatenando il contatore
-            $slug = $baseSlug . '-' . $i;
-            // incrementa il contatore
-            $i++;
-        }
+    //     // finche lo slug generato è presente nella tabella
+    //     while (self::where('slug', $slug)->get()) {
+    //         // genera un nuovo slug concatenando il contatore
+    //         $slug = $baseSlug . '-' . $i;
+    //         // incrementa il contatore
+    //         $i++;
+    //     }
 
-        // ritornare lo slug trovato
-        return $slug;
-    }
+    //     // ritornare lo slug trovato
+    //     return $slug;
+    // }
 }

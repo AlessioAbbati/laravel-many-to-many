@@ -57,7 +57,7 @@ class ProjectController extends Controller
         // Salvare i dati nel database
         $newProject = new Project();
         $newProject->title          = $data['title'];
-        $newProject->slug           = Str::slug($data['title']);
+        $newProject->slug           = Project::slugger($data['title']);
         $newProject->type_id        = $data['type_id'];
         $newProject->author         = $data['author'];
         $newProject->creation_date  = $data['creation_date'];
