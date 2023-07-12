@@ -146,7 +146,7 @@ class ProjectController extends Controller
 
         $project = Project::find($slug);
 
-        return to_route('admin.project.index')->with('cancel_success', $project);
+        return to_route('admin.project.index');
     }
 
     public function trashed()
