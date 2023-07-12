@@ -157,9 +157,9 @@ class ProjectController extends Controller
         return view('admin.projects.trashed', compact('trashedProjects'));
     }
 
-    public function harddelete($id)
+    public function harddelete($slug)
     {
-        $project = Project::withTrashed()->find($id);
+        $project = Project::withTrashed()->find($slug);
         
         // se ho il trashed lo inserisco nel harddelete
         $project->technologies()->detach();
