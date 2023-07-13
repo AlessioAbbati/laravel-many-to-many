@@ -112,8 +112,10 @@ class ProjectController extends Controller
             // salvare l'eventuale nuova immagine
             $imagePath = Storage::put('uploads', $data['image']);
 
-            // eliminare la vecchia immagine
-            Storage::delete($project->image);
+            if($project->image) {
+                // eliminare la vecchia immagine
+                Storage::delete($project->image);
+            }
             
             // aggiorno il valore della nuova immagine
             $project->image  = $imagePath;
