@@ -41,5 +41,6 @@
             </tr>
         </tbody>
     </table>
+    <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}"></td>
 
 @endsection
