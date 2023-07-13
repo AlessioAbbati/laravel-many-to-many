@@ -146,7 +146,7 @@ class ProjectController extends Controller
 
         $project = Project::find($slug);
 
-        return to_route('admin.project.index');
+        return to_route('admin.project.index')->with('cancel_success', $project);
     }
 
     public function trashed()
@@ -159,7 +159,7 @@ class ProjectController extends Controller
 
     public function harddelete($slug)
     {
-        $project = Project::withTrashed()->find($slug);
+        $project = Project::withTrashed()->where('slug', $slug)->first();
         // $project = Project::where('slug', $slug)->firstOrFail();
         // se ho il trashed lo inserisco nel harddelete
         $project->technologies()->detach();
