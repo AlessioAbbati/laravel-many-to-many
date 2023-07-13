@@ -27,6 +27,7 @@ class ProjectsTableSeeder extends Seeder
                 'last_update' => $objProject['last_update'],
                 'collaborators' => $objProject['collaborators'],
                 'description' => $objProject['description'],
+                'image'       => $objProject['image'],
                 'link_github' => $objProject['link_github'],
                 
             ]);
