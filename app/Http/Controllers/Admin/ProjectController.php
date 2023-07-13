@@ -180,6 +180,11 @@ class ProjectController extends Controller
     public function harddelete($slug)
     {
         $project = Project::withTrashed()->where('slug', $slug)->first();
+
+        // cancello i percorsi immagine
+        if ($project->file) {
+            Storage::delete($project->file);
+        }
         
         // se ho il trashed lo inserisco nel harddelete
         $project->technologies()->detach();
