@@ -75,7 +75,7 @@ class ProjectController extends Controller
     }
 
     
-    public function show($slug)
+    public function show($slug) // per vedere la show del trashed aggiungi withTrashed()-> prima del where
     {
         $project = Project::where('slug', $slug)->firstOrFail();
         return view('admin.projects.show', compact('project'));
