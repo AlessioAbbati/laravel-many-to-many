@@ -11,7 +11,7 @@
                 <th scope="col">Collaborators</th>
                 <th scope="col">Description</th>
                 <th scope="col">Technologies</th>
-                <th scope="col">Link</th>
+                <th scope="col">Link Github</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>

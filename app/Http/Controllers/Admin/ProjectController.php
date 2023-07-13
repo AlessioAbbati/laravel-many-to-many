@@ -181,7 +181,7 @@ class ProjectController extends Controller
     {
         $project = Project::withTrashed()->where('slug', $slug)->first();
 
-        // cancello i percorsi immagine
+        // cancello i percorsi immagine DA SISTEMARE
         if ($project->file) {
             Storage::delete($project->file);
         }
