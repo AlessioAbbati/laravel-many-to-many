@@ -3,7 +3,7 @@
 @section('contents')
     <h1>Edit project</h1>
 
-    <form method="POST" action="{{ route('admin.project.update', ['project' => $project]) }}">
+    <form method="POST" action="{{ route('admin.project.update', ['project' => $project]) }}" enctype="multipart/form-data">
         @csrf
         @method('put')
 
@@ -18,6 +18,14 @@
             >
             <div class="invalid-feedback">
                 @error('title') {{ $message }} @enderror
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+            <label class="input-group-text" for="image">Upload</label>
+            <div class="invalid-feedback">
+                @error('image') {{ $message }} @enderror
             </div>
         </div>
 
