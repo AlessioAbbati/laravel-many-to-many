@@ -8,6 +8,7 @@ use App\Models\Technology;
 // use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -54,6 +55,11 @@ class ProjectController extends Controller
         $request->validate($this->validations, $this->validations_messages);
 
         $data = $request->all();
+
+        // salvare l'immagine nella cartella degli uploads
+        // prendere il percorso della nuova immagine
+        $imagePath = Storage::put('uploads', $data['image']);
+        
         // Salvare i dati nel database
         $newProject = new Project();
         $newProject->title          = $data['title'];
@@ -64,6 +70,7 @@ class ProjectController extends Controller
         $newProject->last_update    = $data['last_update'];
         $newProject->collaborators  = $data['collaborators'];
         $newProject->description    = $data['description'];
+        $newProject->image          = $imagePath;
         // $newProject->languages      = $data['languages'];
         $newProject->link_github    = $data['link_github'];
         $newProject->save();
