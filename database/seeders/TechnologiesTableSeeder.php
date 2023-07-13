@@ -16,6 +16,7 @@ class TechnologiesTableSeeder extends Seeder
     public function run()
     {
         foreach (config('technologies') as $objTechnology) {
+        // $objTechnology['slug'] = Technology::slugger($objTechnology['name']);
             Technology::create($objTechnology);
         }
     }
