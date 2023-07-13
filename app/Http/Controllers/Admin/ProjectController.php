@@ -20,6 +20,7 @@ class ProjectController extends Controller
         'last_update'       => 'required|date',
         'collaborators'     => 'string|max:150',
         'description'       => 'string',
+        'image'             => 'nullable|image|max:1024',
         'link_github'       => 'required|url|max:200',
         'technologies'      => 'nullable|array',
         'technologies. *'   => 'integer|exists:technologies,id',
