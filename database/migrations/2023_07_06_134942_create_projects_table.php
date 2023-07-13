@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('last_update');
             $table->string('collaborators', 150)->nullable();
             $table->text('description')->nullable();
+            $table->string('image', 200)->nullable();
             // $table->string('languages', 50);
             $table->string('link_github', 150);
 
