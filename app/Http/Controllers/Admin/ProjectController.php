@@ -106,6 +106,17 @@ class ProjectController extends Controller
         $request->validate($this->validations, $this->validations_messages);
 
         $data = $request->all();
+
+        if($data['image']) {
+            // salvare l'eventuale nuova immagine
+            $imagePath = Storage::put('uploads', $data['image']);
+
+            // eliminare la vecchia immagine
+            Storage::delete($project->image);
+            
+            // aggiorno il valore della nuova immagine
+            $project->image  = $imagePath;
+        }
         
         
         $project->title             = $data['title'];
