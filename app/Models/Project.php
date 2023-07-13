@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\Type;
 use App\Traits\Slugger;
 use App\Models\Technology;
-use Illuminate\Support\Str;
+// use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

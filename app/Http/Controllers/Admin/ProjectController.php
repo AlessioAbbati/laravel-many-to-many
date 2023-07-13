@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Type;
 use App\Models\Project;
 use App\Models\Technology;
-use Illuminate\Support\Str;
+// use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -160,7 +160,7 @@ class ProjectController extends Controller
     public function harddelete($slug)
     {
         $project = Project::withTrashed()->where('slug', $slug)->first();
-        // $project = Project::where('slug', $slug)->firstOrFail();
+        
         // se ho il trashed lo inserisco nel harddelete
         $project->technologies()->detach();
         $project->forceDelete();
